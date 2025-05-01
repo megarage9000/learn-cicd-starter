@@ -26,4 +26,4 @@ megarage9000's version of Boot.dev's Notely app
 
 # Status
 
-![CI/CD Status](Ihttps://github.com/megarage9000/learn-cicd-starter/actions/workflows/ci.yml/badge.svg)
+![CI/CD Status](https://github.com/megarage9000/learn-cicd-starter/actions/workflows/ci.yml/badge.svg)
