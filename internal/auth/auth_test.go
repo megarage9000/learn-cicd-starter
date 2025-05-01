@@ -1,15 +1,15 @@
 package auth
 
 import (
-	"testing"
 	"net/http"
+	"testing"
 )
 
-func TestAuthHeader(t * testing.T) {
+func TestAuthHeader(t *testing.T) {
 
 	type testCase struct {
-		name string
-		input http.Header
+		name     string
+		input    http.Header
 		expected string
 	}
 
@@ -24,11 +24,11 @@ func TestAuthHeader(t * testing.T) {
 	malformedHeader := http.Header{}
 	malformedHeader.Add("Authorization", "2134214")
 
-	tests := []testCase {
-		{name: "Normal Header", input: normalHeader, expected: "1234", },
-		{name: "No Header", input: emptyHeader, expected: "", },
-		{name: "Empty Key", input: emptyKey, expected: "", },
-		{name: "Malformed Header", input: malformedHeader, expected: "", },
+	tests := []testCase{
+		{name: "Normal Header", input: normalHeader, expected: "1234"},
+		{name: "No Header", input: emptyHeader, expected: ""},
+		{name: "Empty Key", input: emptyKey, expected: ""},
+		{name: "Malformed Header", input: malformedHeader, expected: ""},
 	}
 
 	for _, test := range tests {
@@ -36,11 +36,9 @@ func TestAuthHeader(t * testing.T) {
 		// If an error occured, but an expected was provided, fail
 		if err != nil && test.expected != "" {
 			t.Fatalf("%s Test Case Error: %v", test.name, err)
-		// If the result does not equal expected, fail
-		} else if test.expected != result{
+			// If the result does not equal expected, fail
+		} else if test.expected != result {
 			t.Fatalf("%s Test Case Expected: %v, Got: %v", test.name, test.expected, result)
-		}	
+		}
 	}
 }
-
-
