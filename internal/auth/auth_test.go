@@ -34,7 +34,7 @@ func TestAuthHeader(t * testing.T) {
 	for _, test := range tests {
 		result, err := GetAPIKey(test.input)
 		// If an error occured, but an expected was provided, fail
-		if err != nil {
+		if err != nil && test.expected != "" {
 			t.Fatalf("%s Test Case Error: %v", test.name, err)
 		// If the result does not equal expected, fail
 		} else if test.expected != result{
