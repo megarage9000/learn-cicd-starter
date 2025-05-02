@@ -20,3 +20,11 @@ jobs:
 
             - name: Build Notely
               run: ./scripts/buildprod.sh
+
+            - name: Set up Cloud SDK
+              uses: google-github-actions/setup-gcloud@v2
+              with:
+                service_account_key: ${{secrets.GCP_CREDENTIALS}}
+
+            - name: Build Image and Publish to GCP Registry
+              run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-458622/notely-ar-repo/notely:latest .
